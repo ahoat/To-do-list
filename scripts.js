@@ -26,3 +26,10 @@ input.addEventListener("keypress", function (event) {
     createListItem();
   }
 });
+
+// save user's to do list in local storage
+
+// get items from local storage
+// make array of user input
+// add value in array in localstorage
+// show items on to do list when it is refreshed
