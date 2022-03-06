@@ -2,6 +2,13 @@ const input = document.querySelector(".userInput");
 const addBtn = document.querySelector(".add-btn");
 const ul = document.querySelector(".list");
 
+let listArr = [];
+
+//function to save to do list in local storage
+function saveToDo() {
+  localStorage.setItem("to-do-list", JSON.stringify(listArr));
+}
+
 //function to create list element
 function createListItem() {
   let li = document.createElement("li");
@@ -10,6 +17,8 @@ function createListItem() {
   li.appendChild(check);
   li.appendChild(document.createTextNode(input.value));
   ul.appendChild(li);
+  listArr.push(input.value);
+  saveToDo();
   input.value = "";
 }
 
@@ -29,7 +38,14 @@ input.addEventListener("keypress", function (event) {
 
 // save user's to do list in local storage
 
+let savedToDo = localStorage.getItem("to-do-list");
 // get items from local storage
-// make array of user input
-// add value in array in localstorage
+if (savedToDo !== null) {
+  let parsedToDo = JSON.parse(savedToDo);
+  listArr = parsedToDo;
+  for (let toDo of parsedToDo) {
+    console.log(toDo);
+  }
+}
+
 // show items on to do list when it is refreshed
