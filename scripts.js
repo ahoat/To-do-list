@@ -14,13 +14,36 @@ function createListItem() {
   let li = document.createElement("li");
   let check = document.createElement("input");
   check.setAttribute("type", "checkbox");
+  let deleteItem = document.createElement("button");
+  deleteItem.classList.add("delete");
+  deleteItem.innerText = "Delete";
+
   li.appendChild(check);
   li.appendChild(document.createTextNode(input.value));
+  li.appendChild(deleteItem);
   ul.appendChild(li);
   listArr.push(input.value);
   saveToDo();
+  console.log(li);
   input.value = "";
+};
+
+function removeItem (deleteElement) {
+    deleteElement.parentElement.remove()
 }
+
+//add event listener for clicking list items
+
+ul.addEventListener("click", function (e) {
+  switch(e.target.className) {
+    case "li":
+      showEditInput();
+      break;
+    case "delete":
+      removeItem(e.target);
+      break;
+  }
+});
 
 // add list item when button is clicked
 addBtn.addEventListener("click", function () {
