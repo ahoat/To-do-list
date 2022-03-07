@@ -15,7 +15,6 @@ function createListItem() {
   li.appendChild(document.createTextNode(input.value));
   li.appendChild(deleteItem);
   ul.appendChild(li);
-  console.log(li);
   input.value = "";
 };
 
