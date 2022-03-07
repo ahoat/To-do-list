@@ -30,7 +30,17 @@ function createListItem() {
 function removeItem(deleteElement) {
   deleteElement.parentElement.remove();
 }
-
+// delete the element from local storage "to-do-list" value array
+function removeElement(item) {
+  let parsedToDo = JSON.parse(savedToDo);
+  for (let el of parsedToDo) {
+    if (el === item) {
+      let index = parsedToDo.indexOf(el);
+      // parsedToDo.splice(index, 1);
+      // localStorage.setItem("to-do-list", JSON.stringify(parsedToDo));
+    }
+  }
+}
 //add event listener for clicking list items
 
 ul.addEventListener("click", function (e) {
@@ -40,6 +50,7 @@ ul.addEventListener("click", function (e) {
       break;
     case "delete":
       removeItem(e.target);
+      removeElement(e.target.previousSibling.data);
       break;
   }
 });
