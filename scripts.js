@@ -12,8 +12,11 @@ function saveToDo() {
 //function to create list element
 function createListItem() {
   let li = document.createElement("li");
+  li.classList.add(listItem);
+
   let check = document.createElement("input");
   check.setAttribute("type", "checkbox");
+
   let deleteItem = document.createElement("button");
   deleteItem.classList.add("delete");
   deleteItem.innerText = "Delete";
@@ -25,6 +28,11 @@ function createListItem() {
   listArr.push(input.value);
   saveToDo();
   input.value = "";
+};
+
+//function to remove items
+function removeItem (deleteElement) {
+    deleteElement.parentElement.remove()
 }
 //delete the item from web page
 function removeItem(deleteElement) {
