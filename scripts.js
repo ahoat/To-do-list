@@ -12,7 +12,7 @@ function saveToDo() {
 //function to create list element
 function createListItem() {
   let li = document.createElement("li");
-  li.classList.add(listItem);
+  li.classList.add("listItem");
 
   let check = document.createElement("input");
   check.setAttribute("type", "checkbox");
@@ -52,9 +52,11 @@ function removeElement(item) {
 //add event listener for clicking list items
 
 ul.addEventListener("click", function (e) {
-  switch (e.target.className) {
-    case "li":
-      showEditInput();
+
+  switch(e.target.className) {
+    case "listItem":
+      lineThrough(e.target);  //need to create function for line through
+
       break;
     case "delete":
       removeItem(e.target);
