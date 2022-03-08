@@ -24,7 +24,6 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
 
 .userInput {
@@ -33,11 +32,11 @@ ul {
   margin-bottom: 0.5rem;
 }
 
-.list{
+.list {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding-top: 1rem;  
+  padding-top: 1rem;
 }
 
 li {
