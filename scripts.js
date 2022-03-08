@@ -36,8 +36,9 @@ function removeElement(item) {
   for (let el of parsedToDo) {
     if (el === item) {
       let index = parsedToDo.indexOf(el);
-      // parsedToDo.splice(index, 1);
-      // localStorage.setItem("to-do-list", JSON.stringify(parsedToDo));
+      // if user try to delete multiple elements at once?
+      parsedToDo.splice(index, 1);
+      localStorage.setItem("to-do-list", JSON.stringify(parsedToDo));
     }
   }
 }
