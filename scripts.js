@@ -53,11 +53,9 @@ function removeElement(item) {
 //add event listener for clicking list items
 
 ul.addEventListener("click", function (e) {
-
-  switch(e.target.className) {
+  switch (e.target.className) {
     case "listItem":
-      lineThrough(e.target);  //need to create function for line through
-
+      lineThrough(e.target); //need to create function for line through
       break;
     case "delete":
       removeItem(e.target);
