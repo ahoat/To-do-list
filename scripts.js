@@ -28,11 +28,11 @@ function createListItem() {
   listArr.push(input.value);
   saveToDo();
   input.value = "";
-};
+}
 
 //function to remove items
-function removeItem (deleteElement) {
-    deleteElement.parentElement.remove()
+function removeItem(deleteElement) {
+  deleteElement.parentElement.remove();
 }
 //delete the item from web page
 function removeItem(deleteElement) {
