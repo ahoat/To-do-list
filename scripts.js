@@ -28,11 +28,11 @@ function createListItem() {
   listArr.push(input.value);
   saveToDo();
   input.value = "";
-};
+}
 
 //function to remove items
-function removeItem (deleteElement) {
-    deleteElement.parentElement.remove()
+function removeItem(deleteElement) {
+  deleteElement.parentElement.remove();
 }
 //delete the item from web page
 function removeItem(deleteElement) {
@@ -44,8 +44,9 @@ function removeElement(item) {
   for (let el of parsedToDo) {
     if (el === item) {
       let index = parsedToDo.indexOf(el);
-      // parsedToDo.splice(index, 1);
-      // localStorage.setItem("to-do-list", JSON.stringify(parsedToDo));
+      // if user try to delete multiple elements at once?
+      parsedToDo.splice(index, 1);
+      localStorage.setItem("to-do-list", JSON.stringify(parsedToDo));
     }
   }
 }
