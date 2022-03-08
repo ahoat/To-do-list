@@ -27,7 +27,6 @@ function createListItem() {
   ul.appendChild(li);
   listArr.push(input.value);
   saveToDo();
-  console.log(li);
   input.value = "";
 };
 
@@ -35,16 +34,33 @@ function createListItem() {
 function removeItem (deleteElement) {
     deleteElement.parentElement.remove()
 }
-
+//delete the item from web page
+function removeItem(deleteElement) {
+  deleteElement.parentElement.remove();
+}
+// delete the element from local storage "to-do-list" value array
+function removeElement(item) {
+  let parsedToDo = JSON.parse(savedToDo);
+  for (let el of parsedToDo) {
+    if (el === item) {
+      let index = parsedToDo.indexOf(el);
+      // parsedToDo.splice(index, 1);
+      // localStorage.setItem("to-do-list", JSON.stringify(parsedToDo));
+    }
+  }
+}
 //add event listener for clicking list items
 
 ul.addEventListener("click", function (e) {
+
   switch(e.target.className) {
     case "listItem":
       lineThrough(e.target);  //need to create function for line through
+
       break;
     case "delete":
       removeItem(e.target);
+      removeElement(e.target.previousSibling.data);
       break;
   }
 });
@@ -62,17 +78,27 @@ input.addEventListener("keypress", function (event) {
     createListItem();
   }
 });
+// show items on to do list when user refresh the webpage
+function printToDo(item) {
+  let li = document.createElement("li");
+  let check = document.createElement("input");
+  check.setAttribute("type", "checkbox");
+  let deleteItem = document.createElement("button");
+  deleteItem.classList.add("delete");
+  deleteItem.innerText = "Delete";
+  li.appendChild(check);
+  li.appendChild(document.createTextNode(item));
+  li.appendChild(deleteItem);
+  ul.appendChild(li);
+}
 
 // save user's to do list in local storage
-
 let savedToDo = localStorage.getItem("to-do-list");
 // get items from local storage
 if (savedToDo !== null) {
   let parsedToDo = JSON.parse(savedToDo);
   listArr = parsedToDo;
   for (let toDo of parsedToDo) {
-    console.log(toDo);
+    printToDo(toDo);
   }
 }
-
-// show items on to do list when it is refreshed
