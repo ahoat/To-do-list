@@ -16,9 +16,10 @@ function createListItem() {
   let check = document.createElement("input");
   check.setAttribute("type", "checkbox");
 
-  let deleteItem = document.createElement("button");
+  let deleteItem = document.createElement("input");
+  deleteItem.setAttribute("type", "button")
   deleteItem.classList.add("delete");
-  deleteItem.innerText = "Delete";
+  deleteItem.value = "Delete";
 
   li.appendChild(check);
   li.appendChild(document.createTextNode(input.value));
@@ -33,10 +34,7 @@ function createListItem() {
 function removeItem(deleteElement) {
   deleteElement.parentElement.remove();
 }
-//delete the item from web page
-function removeItem(deleteElement) {
-  deleteElement.parentElement.remove();
-}
+
 // delete the element from local storage "to-do-list" value array
 function removeElement(item) {
   let parsedToDo = JSON.parse(savedToDo);
@@ -83,9 +81,11 @@ function printToDo(item) {
   let li = document.createElement("li");
   let check = document.createElement("input");
   check.setAttribute("type", "checkbox");
-  let deleteItem = document.createElement("button");
+
+  let deleteItem = document.createElement("input");
+  deleteItem.setAttribute("type", "button")
   deleteItem.classList.add("delete");
-  deleteItem.innerText = "Delete";
+  deleteItem.value = "Delete";
   li.appendChild(check);
   li.appendChild(document.createTextNode(item));
   li.appendChild(deleteItem);
@@ -102,3 +102,11 @@ if (savedToDo !== null) {
     printToDo(toDo);
   }
 }
+
+//Clear local storage
+const clear = document.querySelector(".clear");
+
+clear.addEventListener("click", () => {
+  localStorage.clear();
+  location.reload();
+});
