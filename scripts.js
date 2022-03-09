@@ -16,15 +16,17 @@ function createListItem() {
   let check = document.createElement("input");
   check.setAttribute("type", "checkbox");
 
-  let deleteItem = document.createElement("button");
+  let deleteItem = document.createElement("input");
+  deleteItem.setAttribute("type", "button")
   deleteItem.classList.add("delete");
-  deleteItem.innerText = "";
+  deleteItem.value = "Delete";
 
   li.appendChild(check);
   li.appendChild(document.createTextNode(input.value));
   li.appendChild(deleteItem);
+  console.log(li.ATTRIBUTE_NODE);
   ul.appendChild(li);
-  console.log(li);
+  console.log(li.innerHTML);
   listArr.push(input.value);
   saveToDo();
   input.value = "";
@@ -84,9 +86,11 @@ function printToDo(item) {
   let li = document.createElement("li");
   let check = document.createElement("input");
   check.setAttribute("type", "checkbox");
-  let deleteItem = document.createElement("button");
+
+  let deleteItem = document.createElement("input");
+  deleteItem.setAttribute("type", "button")
   deleteItem.classList.add("delete");
-  deleteItem.innerText = "Delete";
+  deleteItem.value = "Delete";
   li.appendChild(check);
   li.appendChild(document.createTextNode(item));
   li.appendChild(deleteItem);
@@ -110,4 +114,4 @@ const clear = document.querySelector(".clear");
 clear.addEventListener("click", () => {
   localStorage.clear();
   location.reload();
-})
+});
