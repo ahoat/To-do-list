@@ -1,6 +1,7 @@
 const input = document.querySelector(".userInput");
 const addBtn = document.querySelector(".add-btn");
 const ul = document.querySelector(".list");
+const form = document.querySelector("#add-form");
 
 let listArr = [];
 
@@ -30,33 +31,14 @@ function createListItem() {
   input.value = "";
 }
 
-//function to remove items
 function removeItem(deleteElement) {
   deleteElement.parentElement.remove();
   let deleteId = deleteElement.parentElement.id;
   let parsedToDo = JSON.parse(savedToDo);
-  //   parsedToDo.filter(checkId(deleteId));
-  //   for (let el of parsedToDo) {
-  //     console.log(el);
-  //     // parsedToDo.filter(el.id !== parseInt(deleteId));
-  //   }
+  listArr = parsedToDo.filter((toDo) => toDo.id !== parseInt(deleteId));
+  saveToDo();
 }
-// function checkId(id) {
-//   console.log(id);
-// }
 
-// delete the element from local storage "to-do-list" value array
-function removeElement(item) {
-  let parsedToDo = JSON.parse(savedToDo);
-  for (let el of parsedToDo) {
-    if (el === item) {
-      let index = parsedToDo.indexOf(el);
-      // if user try to delete multiple elements at once?
-      parsedToDo.splice(index, 1);
-      localStorage.setItem("to-do-list", JSON.stringify(parsedToDo));
-    }
-  }
-}
 //add event listener for clicking list items
 ul.addEventListener("click", function (e) {
   switch (e.target.className) {
@@ -82,6 +64,7 @@ input.addEventListener("keypress", function (event) {
     createListItem();
   }
 });
+
 // show items on to do list when user refresh the webpage
 function printToDo(toDo) {
   let item = toDo.text;
