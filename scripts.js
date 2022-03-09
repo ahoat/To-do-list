@@ -18,12 +18,13 @@ function createListItem() {
 
   let deleteItem = document.createElement("button");
   deleteItem.classList.add("delete");
-  deleteItem.innerText = "Delete";
+  deleteItem.innerText = "";
 
   li.appendChild(check);
   li.appendChild(document.createTextNode(input.value));
   li.appendChild(deleteItem);
   ul.appendChild(li);
+  console.log(li);
   listArr.push(input.value);
   saveToDo();
   input.value = "";
@@ -102,3 +103,11 @@ if (savedToDo !== null) {
     printToDo(toDo);
   }
 }
+
+//Clear local storage
+const clear = document.querySelector(".clear");
+
+clear.addEventListener("click", () => {
+  localStorage.clear();
+  location.reload();
+})
