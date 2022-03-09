@@ -46,7 +46,7 @@ li {
 }
 
 /* small mobile */
-/* @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   main {
     display: flex;
     flex-flow: column wrap;
@@ -58,9 +58,9 @@ li {
   section {
     border: 5px dotted green;
   }
-} */
+}
 /* mobile */
-/* @media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) {
   main {
     display: flex;
     flex-flow: column wrap;
@@ -73,10 +73,10 @@ li {
   section {
     border: 5px solid red;
   }
-} */
+}
 /* tablet */
 @media only screen and (min-width: 768px) {
-  /* main {
+  main {
     display: flex;
     flex-flow: column wrap;
     border: 5px solid blue;
@@ -88,9 +88,9 @@ li {
   section {
     border: 5px solid blue;
   }
-} */
+}
 /* web */
-/* @media only screen and (min-width: 992px) {
+@media only screen and (min-width: 992px) {
   main {
     display: flex;
     flex-flow: column wrap;
@@ -103,4 +103,4 @@ li {
   section {
     border: 5px solid yellow;
   }
-} */
+}

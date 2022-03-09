@@ -24,9 +24,7 @@ function createListItem() {
   li.appendChild(check);
   li.appendChild(document.createTextNode(input.value));
   li.appendChild(deleteItem);
-  console.log(li.ATTRIBUTE_NODE);
   ul.appendChild(li);
-  console.log(li.innerHTML);
   listArr.push(input.value);
   saveToDo();
   input.value = "";
@@ -36,10 +34,7 @@ function createListItem() {
 function removeItem(deleteElement) {
   deleteElement.parentElement.remove();
 }
-//delete the item from web page
-function removeItem(deleteElement) {
-  deleteElement.parentElement.remove();
-}
+
 // delete the element from local storage "to-do-list" value array
 function removeElement(item) {
   let parsedToDo = JSON.parse(savedToDo);
