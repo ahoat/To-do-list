@@ -17,7 +17,7 @@ function createListItem() {
   check.setAttribute("type", "checkbox");
 
   let deleteItem = document.createElement("input");
-  deleteItem.setAttribute("type", "button")
+  deleteItem.setAttribute("type", "button");
   deleteItem.classList.add("delete");
   deleteItem.value = "Delete";
 
@@ -36,29 +36,23 @@ function removeItem(deleteElement) {
 }
 
 // delete the element from local storage "to-do-list" value array
-function removeElement(item) {
+function removeItem(deleteElement) {
+  deleteElement.parentElement.remove();
+  let deleteId = deleteElement.parentElement.id;
   let parsedToDo = JSON.parse(savedToDo);
-  for (let el of parsedToDo) {
-    if (el === item) {
-      let index = parsedToDo.indexOf(el);
-      // if user try to delete multiple elements at once?
-      parsedToDo.splice(index, 1);
-      localStorage.setItem("to-do-list", JSON.stringify(parsedToDo));
-    }
-  }
+  listArr = parsedToDo.filter((toDo) => toDo.id !== parseInt(deleteId));
+  saveToDo();
 }
 //add event listener for clicking list items
 
 ul.addEventListener("click", function (e) {
-
-  switch(e.target.className) {
+  switch (e.target.className) {
     case "listItem":
-      lineThrough(e.target);  //need to create function for line through
+      lineThrough(e.target); //need to create function for line through
 
       break;
     case "delete":
       removeItem(e.target);
-      removeElement(e.target.previousSibling.data);
       break;
   }
 });
@@ -83,7 +77,7 @@ function printToDo(item) {
   check.setAttribute("type", "checkbox");
 
   let deleteItem = document.createElement("input");
-  deleteItem.setAttribute("type", "button")
+  deleteItem.setAttribute("type", "button");
   deleteItem.classList.add("delete");
   deleteItem.value = "Delete";
   li.appendChild(check);
