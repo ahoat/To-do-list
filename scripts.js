@@ -33,6 +33,7 @@ function createListItem() {
 
 function removeItem(deleteElement) {
   deleteElement.parentElement.remove();
+
   let deleteId = deleteElement.parentElement.id;
   let parsedToDo = JSON.parse(savedToDo);
   listArr = parsedToDo.filter((toDo) => toDo.id !== parseInt(deleteId));
