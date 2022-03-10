@@ -1,6 +1,7 @@
 const input = document.querySelector(".userInput");
 const addBtn = document.querySelector(".add-btn");
 const ul = document.querySelector(".list");
+const form = document.querySelector("#add-form");
 
 let listArr = [];
 
@@ -25,31 +26,25 @@ function createListItem() {
   li.appendChild(document.createTextNode(input.value));
   li.appendChild(deleteItem);
   ul.appendChild(li);
-  listArr.push(input.value);
+  listArr.push({ text: input.value, id: Date.now() });
   saveToDo();
   input.value = "";
 }
 
-//function to remove items
 function removeItem(deleteElement) {
   deleteElement.parentElement.remove();
-}
 
-// delete the element from local storage "to-do-list" value array
-function removeItem(deleteElement) {
-  deleteElement.parentElement.remove();
   let deleteId = deleteElement.parentElement.id;
   let parsedToDo = JSON.parse(savedToDo);
   listArr = parsedToDo.filter((toDo) => toDo.id !== parseInt(deleteId));
   saveToDo();
 }
-//add event listener for clicking list items
 
+//add event listener for clicking list items
 ul.addEventListener("click", function (e) {
   switch (e.target.className) {
     case "listItem":
       lineThrough(e.target); //need to create function for line through
-
       break;
     case "delete":
       removeItem(e.target);
@@ -70,8 +65,11 @@ input.addEventListener("keypress", function (event) {
     createListItem();
   }
 });
+
 // show items on to do list when user refresh the webpage
-function printToDo(item) {
+function printToDo(toDo) {
+  let item = toDo.text;
+  let id = toDo.id;
   let li = document.createElement("li");
   let check = document.createElement("input");
   check.setAttribute("type", "checkbox");
@@ -83,6 +81,7 @@ function printToDo(item) {
   li.appendChild(check);
   li.appendChild(document.createTextNode(item));
   li.appendChild(deleteItem);
+  li.setAttribute("id", id);
   ul.appendChild(li);
 }
 
