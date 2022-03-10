@@ -13,13 +13,16 @@
       <section>
         <div class="container, center">
           <h1>To Do List</h1>
-          <input
-            class="userInput"
-            type="text"
-            placeholder="enter things to do"
-          />
-          <button class="add-btn">Add to List</button>
-          <ul class="list"></ul> 
+          <form action="" id="add-form">
+            <input
+              name="toDo"
+              class="userInput"
+              type="text"
+              placeholder="enter things to do"
+            />
+            <button type="submit" class="add-btn">Add to List</button>
+          </form>
+          <ul class="list"></ul>
         </div>
       </section>
       <section>
@@ -32,6 +35,6 @@
     </main>
     <script src="test-helpers.js"></script>
     <script src="scripts.js"></script>
-    <script src="index.test.js"></script>
+    <!-- <script src="index.test.js"></script> -->
   </body>
 </html>
